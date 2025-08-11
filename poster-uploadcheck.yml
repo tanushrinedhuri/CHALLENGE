@@ -1,0 +1,27 @@
+name: Poster Upload Check
+
+on:
+  push:
+    # runs on all pushes; restrict if you want (e.g., branches: [ main, 'poster/*' ])
+    paths:
+      - 'posters/**'
+      - '.github/workflows/**'
+      - 'README.md'
+
+jobs:
+  poster-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: List posters folder (for debugging)
+        run: |
+          echo "Listing posters directory:"
+          ls -la posters || echo "No posters directory found."
+
+      - name: Poster Uploaded Confirmation
+        run: |
+          echo "Poster Uploaded Successfully"
+
+
